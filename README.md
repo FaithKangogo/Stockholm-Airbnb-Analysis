@@ -1,5 +1,3 @@
-# Stockholm Airbnb Analysis
-
 # Stockholm Airbnb Market Analysis
 
 An end-to-end data analysis of Stockholm's short-term rental market, examining the drivers of nightly price and the structure of the host landscape.
