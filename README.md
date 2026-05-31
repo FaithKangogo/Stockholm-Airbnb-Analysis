@@ -13,7 +13,7 @@ This project investigates what drives nightly price across Stockholm's Airbnb li
 
 ## Data
 
-**Source:** [Inside Airbnb](http://insideairbnb.com/get-the-data/) — Stockholm, [September 2026] snapshot.
+**Source:** [Inside Airbnb](http://insideairbnb.com/get-the-data/) — Stockholm, September 2026 snapshot.
 
 One row per active listing, covering price, location, room type, host attributes, and review activity. To reproduce this analysis, download the detailed `listings.csv.gz` file for Stockholm from the link above and place it in the project folder.
 
