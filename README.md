@@ -5,11 +5,20 @@ An end-to-end data analysis of Stockholm's short-term rental market, examining t
 **Author:** Faith Kangogo
 **Tools:** Python · SQL (SQLite) · pandas · matplotlib · seaborn · scipy
 
+## Skills Demonstrated
+
+- Exploratory Data Analysis (EDA)
+- SQL querying (SQLite)
+- Statistical hypothesis testing
+- Data visualisation
+- Business insight generation
+- Data cleaning & preprocessing
+
 ---
 
-## Objective
+## Business Question
 
-This project investigates what drives nightly price across Stockholm's Airbnb listings and characterises the host market. The goal is to surface patterns useful to a host setting a competitive price, or to a platform team monitoring market health.
+This project investigates what drives nightly prices across Stockholm's Airbnb listings and characterises the host market. The goal is to surface patterns useful to a host setting a competitive price, or to a platform team monitoring market health.
 
 ## Data
 
@@ -29,6 +38,8 @@ After cleaning (converting price to numeric, removing listings with no recorded 
 ---
 
 ## Key Findings
+
+The analysis identified five key insights that explain pricing behaviour and the structure of Stockholm's Airbnb market.
 
 ### 1. Stockholm Airbnb prices are highly right-skewed
 
