@@ -30,34 +30,38 @@ After cleaning (converting price to numeric, removing listings with no recorded 
 
 ## Key Findings
 
-- **1. Stockholm Airbnb prices are highly right-skewed**
-  
+### 1. Stockholm Airbnb prices are highly right-skewed
 
-- The median nightly price is **1,196 SEK**, with most listings between 500–1,500 SEK and a long tail of premium listings up to ~6,750 SEK.
+  <img width="1923" height="722" alt="stockholm_price_and roomtype_distribution" src="https://github.com/user-attachments/assets/cf84c537-3870-4111-acd3-87d5fec76246" />
   
- **2. Room type is a strong price driver.** 
- <img width="1473" height="869" alt="price_by_room_type" src="https://github.com/user-attachments/assets/ceed952c-8584-4e6a-a467-27b0de8c050f" />
+The median nightly price is **1,196 SEK**, with most listings between 500–1,500 SEK and a long tail of premium listings up to ~6,750 SEK.
+  
+ ### 2. Room type is a strong price driver. 
  
  <img width="1923" height="722" alt="stockholm_price_and roomtype_distribution" src="https://github.com/user-attachments/assets/26a1f19b-dbfc-4a16-b0d7-261725ff4cda" />
+ 
+<img width="1473" height="869" alt="price_by_room_type" src="https://github.com/user-attachments/assets/ceed952c-8584-4e6a-a467-27b0de8c050f" />
 
-Entire homes/apartments dominate the market (**79.6%** of listings) and command roughly **2.1× the price** of private rooms (1,684 SEK vs 808 SEK), making room type the single strongest pricing factor observed.
+Entire homes/apartments dominate the market (**79.6%** of listings) and command roughly **2.1× the price** of private rooms (1,684 SEK vs 808 SEK), making room type one of the clearest pricing factors observed.
 
-- **3. Location matters. Clear centre-to-periphery price gradient.**
+### 3. Location matters. Clear centre-to-periphery price gradient.
+
 <img width="1475" height="870" alt="price_by_neighbourhood" src="https://github.com/user-attachments/assets/879e8742-caee-4fb4-98df-13e91ac195c6" />
 
 Central, affluent districts (Södermalm, Norrmalm, Östermalm) average ~1,700+ SEK, while outer districts average roughly half that.
 
- **4. Most hosts are casual.** 
+ ### 4. Most hosts are casual. 
  
  <img width="1093" height="870" alt="host_types" src="https://github.com/user-attachments/assets/f2028396-be10-4de4-aefc-827810f7eb5e" />
 
-Nearly two-thirds of hosts operate only a single listing, suggesting that Stockholm's Airbnb market remains dominated by individual rather than commercial operators.
+Nearly two-thirds of hosts operate only one listing, indicating that Stockholm's Airbnb supply remains predominantly distributed among individual hosts rather than concentrated among multi-listing operators.
  
- **5.Superhosts don't charge significantly more** 
+ ### 5. Superhosts don't charge significantly more. 
  
  <img width="1923" height="763" alt="superhost_test" src="https://github.com/user-attachments/assets/c19d7c8f-4b1d-448f-acdb-a2c128a2c849" />
  
-(Welch's t-test, p = 0.13). Superhosts charged marginally *less* on average — suggesting the badge functions as a trust/competitiveness signal rather than a pricing lever.
+Welch's t-test found no statistically significant price difference between Superhosts and regular hosts (p = 0.13). Superhosts charged marginally less on average, suggesting that Superhost status may be associated more with competitiveness or guest trust than with a direct pricing premium. 
+Further analysis of occupancy and booking performance would be needed to test this interpretation.
 
 ## Repository Contents
 
