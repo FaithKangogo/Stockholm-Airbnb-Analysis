@@ -2,8 +2,7 @@
 
 An end-to-end data analysis of Stockholm's short-term rental market, examining the drivers of nightly price and the structure of the host landscape.
 
-**Author:** Faith Kangogo
-**Tools:** Python · SQL (SQLite) · pandas · matplotlib · seaborn · scipy
+**Author:** Faith Kangogo &nbsp;&nbsp; **Tools:** Python · SQL (SQLite) · pandas · matplotlib · seaborn · scipy
 
 ## Skills Demonstrated
 
@@ -22,68 +21,63 @@ This project investigates what drives nightly prices across Stockholm's Airbnb l
 
 ## Data
 
-**Source:** [Inside Airbnb](http://insideairbnb.com/get-the-data/) — Stockholm, May 2026 snapshot.
+**Source:** [Inside Airbnb](http://insideairbnb.com/get-the-data/), Stockholm, 30 June 2026 snapshot.
 
 One row per active listing, covering price, location, room type, host attributes, and review activity. To reproduce this analysis, download the detailed `listings.csv.gz` file for Stockholm from the link above and place it in the project folder.
 
-After cleaning (converting price to numeric, removing listings with no recorded price, and excluding the top 1% of prices as outliers), the working dataset contains **3,158 actively bookable listings**.
+After cleaning (converting price to numeric, removing listings with no recorded price, and excluding the top 1% of prices as outliers), the working dataset contains **3,231 actively bookable listings** out of 4,806 scraped.
 
 ## Approach
 
-1. **Data cleaning** — converted price from text to numeric, mapped Superhost flags, handled missing values, and removed outliers.
-2. **SQL extraction** — loaded the cleaned data into an in-memory SQLite database and used SQL (`GROUP BY`, aggregation, `HAVING`, `CASE`) for analysis.
-3. **Statistical testing** — applied a Welch's two-sample t-test to assess whether Superhost status is associated with price.
-4. **Visualisation & interpretation** — produced charts and written business insights for each finding.
+1. **Data cleaning:** converted price from text to numeric, mapped Superhost flags, handled missing values, and removed outliers.
+2. **SQL extraction:** loaded the cleaned data into an in-memory SQLite database and used SQL (`GROUP BY`, aggregation, `HAVING`, `CASE`) for analysis.
+3. **Statistical testing:** applied a Welch's two-sample t-test to assess whether Superhost status is associated with price.
+4. **Visualisation & interpretation:** produced charts and written business insights for each finding.
 
 ---
 
 ## Key Findings
 
-The analysis identified five key insights that explain pricing behaviour and the structure of Stockholm's Airbnb market.
-
 ### 1. Stockholm Airbnb prices are highly right-skewed
 
-  <img width="1923" height="722" alt="stockholm_price_and roomtype_distribution" src="https://github.com/user-attachments/assets/cf84c537-3870-4111-acd3-87d5fec76246" />
-  
-The median nightly price is **1,196 SEK**, with most listings between 500–1,500 SEK and a long tail of premium listings up to ~6,750 SEK.
-  
- ### 2. Room type is a strong price driver. 
- 
- <img width="1923" height="722" alt="stockholm_price_and roomtype_distribution" src="https://github.com/user-attachments/assets/26a1f19b-dbfc-4a16-b0d7-261725ff4cda" />
- 
-<img width="1473" height="869" alt="price_by_room_type" src="https://github.com/user-attachments/assets/ceed952c-8584-4e6a-a467-27b0de8c050f" />
+![Price and room type distribution](stockholm_price_roomtype_distribution.png)
 
-Entire homes/apartments dominate the market (**79.6%** of listings) and command roughly **2.1× the price** of private rooms (1,684 SEK vs 808 SEK), making room type one of the clearest pricing factors observed.
+The median nightly price is **1,918 SEK**, with half of all listings between roughly 1,100 and 3,000 SEK and a long tail of premium listings up to about 9,100 SEK.
 
-### 3. Location matters. Clear centre-to-periphery price gradient.
+### 2. Room type is a strong price driver
 
-<img width="1475" height="870" alt="price_by_neighbourhood" src="https://github.com/user-attachments/assets/879e8742-caee-4fb4-98df-13e91ac195c6" />
+![Price by room type](price_by_room_type.png)
 
-Central, affluent districts (Södermalm, Norrmalm, Östermalm) average ~1,700+ SEK, while outer districts average roughly half that.
+Entire homes/apartments dominate the market (**81% of listings**) and average roughly **2.6× the price** of private rooms (2,570 SEK vs 1,002 SEK), making room type one of the clearest pricing factors observed.
 
- ### 4. Most hosts are casual. 
- 
- <img width="1093" height="870" alt="host_types" src="https://github.com/user-attachments/assets/f2028396-be10-4de4-aefc-827810f7eb5e" />
+### 3. Location matters, but it is a tendency rather than a rule
 
-Nearly two-thirds of hosts operate only one listing, indicating that Stockholm's Airbnb supply remains predominantly distributed among individual hosts rather than concentrated among multi-listing operators.
- 
- ### 5. Superhosts don't charge significantly more. 
- 
- <img width="1923" height="763" alt="superhost_test" src="https://github.com/user-attachments/assets/c19d7c8f-4b1d-448f-acdb-a2c128a2c849" />
- 
-Welch's t-test found no statistically significant price difference between Superhosts and regular hosts (p = 0.13). Superhosts charged marginally less on average, suggesting that Superhost status may be associated more with competitiveness or guest trust than with a direct pricing premium. 
-Further analysis of occupancy and booking performance would be needed to test this interpretation.
+![Price by neighbourhood](price_by_neighbourhood.png)
+
+Södermalm tops the market at about 2,672 SEK on average, with the premium central districts (Östermalm, Norrmalm) close behind, while the cheapest outer districts (Skärholmen at 1,178 SEK, Rinkeby-Tensta at 1,226 SEK) average less than half of Södermalm's rate. Interestingly, some districts outside the centre (Bromma, Farsta) also rank near the top, so the centre-to-periphery gradient holds broadly but with exceptions worth investigating.
+
+### 4. Hosting is overwhelmingly casual, with a small professional tail
+
+![Host types](host_types.png)
+
+About **9 in 10 hosts** operate a single listing, and these single-listing hosts supply roughly **two-thirds (65%) of all listings**. At the other end, a handful of professional operators run large portfolios, with the biggest managing over 50 listings.
+
+### 5. Superhosts don't charge significantly more
+
+![Superhost test](superhost_test.png)
+
+Superhosts average slightly higher prices than regular hosts (2,344 vs 2,237 SEK, about 5% more), but a Welch's t-test finds the difference is not statistically significant at the 5% level (p = 0.09). Superhost status appears to be associated more with guest trust and competitiveness than with a clear pricing premium. Further analysis of occupancy and booking performance would be needed to test this interpretation.
 
 ## Repository Contents
 
 | File | Description |
-|------|-------------|
+| --- | --- |
 | `airbnb_market_analysis.ipynb` | The full analysis notebook |
-| `price_roomtype_distribution.png` | Price distribution and room-type overview |
+| `stockholm_price_roomtype_distribution.png` | Price distribution and room-type overview |
 | `price_by_neighbourhood.png` | Average price by neighbourhood |
 | `price_by_room_type.png` | Price distribution by room type |
-| `superhost_price_test.png` | Superhost vs regular host price comparison |
-| `host_segmentation.png` | Market share by host type |
+| `superhost_test.png` | Superhost vs regular host price comparison |
+| `host_types.png` | Market share by host type |
 
 ## How to Run
 
@@ -94,10 +88,9 @@ Further analysis of occupancy and booking performance would be needed to test th
 ## Possible Extensions
 
 - Test whether Superhost status drives higher **occupancy** rather than price, using booking/availability data.
-- Build a geographic **price heat map** from the latitude/longitude columns.
+- Investigate why some non-central districts (Bromma, Farsta) command high prices.
 - Model price as a function of multiple features (size, location, room type) using regression.
 
 ---
 
 *Prices are in Swedish kronor (SEK). This is a portfolio project for learning and demonstration purposes.*
-
